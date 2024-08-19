@@ -9,10 +9,6 @@ app.get('/', (request, response) => {
     return response.status(234).send('TEST')
 });
 
-app.listen(PORT, () => {
-    console.log(`App is listening to port: ${PORT}`);
-});
-
 mongoose
     .connect(mongoDBURL)
     .then(() => {
