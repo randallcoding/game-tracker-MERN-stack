@@ -40,6 +40,36 @@ app.post('/games', async (request, response) => {
     }
     });
 
+// Route for getting all games from database
+app.get('/games', async (request, response) => {
+    try {
+        const games = await Game.find({});
+
+        return response.status(200).json({
+            count: games.length,
+            data: games
+        });
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({message: error.message });
+    }
+});
+
+// Route for getting one game from database by id
+app.get('/games/:id', async (request, response) => {
+    try {
+
+        const { id } = request.params;
+
+        const game = await Game.findById(id);
+
+        return response.status(200).json(game);
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
+
 mongoose
     .connect(mongoDBURL)
     .then(() => {
