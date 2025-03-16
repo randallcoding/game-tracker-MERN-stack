@@ -98,7 +98,24 @@ app.put('/games/:id', async (request, response) => {
     }
   });
 
+// Route for deleting a game
 
+app.delete('/games/:id', async (request, response) => {
+    try {
+        const { id } = request.params;
+
+        const result = await Game.findByIdAndDelete(id);
+
+        if (!result) {
+            return response.status(404).json({ message: 'Game not found' });
+        }
+
+        return response.status(200).send({ message: 'Game deleted successfully' });
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
 
 
 mongoose
