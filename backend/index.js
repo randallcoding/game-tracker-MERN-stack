@@ -70,6 +70,37 @@ app.get('/games/:id', async (request, response) => {
     }
 });
 
+// Route for updating a game
+app.put('/games/:id', async (request, response) => {
+    try {
+      if (
+        !request.body.title ||
+        !request.body.console ||
+        !request.body.publishYear
+      ) {
+        return response.status(400).send({
+          message: 'Send all required fields: title, console, publishYear',
+        });
+      }
+  
+      const { id } = request.params;
+  
+      const result = await Game.findByIdAndUpdate(id, request.body);
+  
+      if (!result) {
+        return response.status(404).json({ message: 'Game not found' });
+      }
+  
+      return response.status(200).send({ message: 'Game updated successfully' });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
+    }
+  });
+
+
+
+
 mongoose
     .connect(mongoDBURL)
     .then(() => {
