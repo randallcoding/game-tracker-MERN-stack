@@ -9,11 +9,11 @@ import DeleteGame from './pages/DeleteGame'
 const App = () => {
   return (
     <Routes>
-      <Route path='' element={} />
-      <Route path='' element={} />
-      <Route path='' element={} />
-      <Route path='' element={} />
-      <Route path='' element={} />
+      <Route path='/' element={<Home />} />
+      <Route path='/games/create' element={<CreateGames />}  />
+      <Route path='/games/details/:id' element={<ShowGame />} />
+      <Route path='/games/edit/:id' element={<EditBook />} />
+      <Route path='/games/delete/:id' element={<DeleteGame />} />
     </Routes>
   )
 }
