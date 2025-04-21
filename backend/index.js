@@ -12,14 +12,14 @@ app.use(express.json());
 
 // Middleware for handling CORS policy
 
-app.use(
-    cors({
-        origin: 'http://localhost:5500',
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['Content-Type'],
+// app.use(
+    // cors({
+        // origin: 'http://localhost:5500',
+        // methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        // allowedHeaders: ['Content-Type'],
 
-    })
-);
+    // })
+// );
 
 
 app.get('/', (request, response) => {
