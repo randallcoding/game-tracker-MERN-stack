@@ -12,10 +12,12 @@ const App = () => {
       <Route path='/' element={<Home />} />
       <Route path='/games/create' element={<CreateGames />}  />
       <Route path='/games/details/:id' element={<ShowGame />} />
-      <Route path='/games/edit/:id' element={<EditBook />} />
+      <Route path='/games/edit/:id' element={<EditGame />} />
       <Route path='/games/delete/:id' element={<DeleteGame />} />
     </Routes>
   )
 }
 
 export default App
+
+
